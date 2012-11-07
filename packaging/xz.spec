@@ -10,9 +10,8 @@ Source2:        baselibs.conf
 BuildRequires:  pkgconfig
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-%ifarch %{arm} %sparc
+%ifarch %{arm} 
 %define do_profiling 0
 %endif
 
