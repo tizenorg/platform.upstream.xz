@@ -4,7 +4,7 @@ Release:        0
 License:        LGPL-2.1+ and GPL-2.0+
 Summary:        A Program for Compressing Files
 Url:            http://tukaani.org/lzma/
-Group:          Productivity/Archiving/Compression
+Group:          Base/Tools
 Source:         http://tukaani.org/xz/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
 BuildRequires:  pkgconfig
@@ -45,7 +45,7 @@ Library for encoding/decoding LZMA files.
 
 %package devel
 Summary:        Development package for the LZMA library
-Group:          Development/Libraries/C and C++
+Group:          Development/Libraries
 Requires:       liblzma = %{version}
 Provides:       lzma-devel = %{version}
 Obsoletes:      lzma-devel < %{version}
@@ -92,6 +92,7 @@ time make check
 
 %files
 %defattr(-, root, root)
+%license COPYING*
 %_docdir/%{name}
 %{_bindir}/*
 
