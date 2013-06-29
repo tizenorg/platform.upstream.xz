@@ -7,6 +7,7 @@ Url:            http://tukaani.org/lzma/
 Group:          Base/Tools
 Source:         http://tukaani.org/xz/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
+Source1001: 	xz.manifest
 BuildRequires:  pkgconfig
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
@@ -58,6 +59,7 @@ compiling programs using the LZMA library.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 
 %build
 %if %{do_profiling}
@@ -91,16 +93,19 @@ time make check
 %docs_package
 
 %files
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %license COPYING*
 %_docdir/%{name}
 %{_bindir}/*
 
 %files -n liblzma
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_libdir}/lib*.so.5*
 
 %files devel
+%manifest %{name}.manifest
 %defattr(-, root, root)
 %{_includedir}/*.h
 %{_includedir}/lzma
