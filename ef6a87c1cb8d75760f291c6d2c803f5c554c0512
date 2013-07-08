@@ -1,0 +1,8 @@
+Change-Id: Ief6a87c1cb8d75760f291c6d2c803f5c554c0512
+Code-Review+2: Ryan Ware <ware@linux.intel.com>
+Verified+1: Ryan Ware <ware@linux.intel.com>
+Submitted-by: Ryan Ware <ware@linux.intel.com>
+Submitted-at: Mon, 08 Jul 2013 09:38:14 -0700
+Reviewed-on: https://review.tizen.org/gerrit/5028
+Project: platform/upstream/xz
+Branch: refs/heads/tizen
