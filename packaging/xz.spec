@@ -1,14 +1,16 @@
 Name:           xz
-Version:        5.0.3
+Version:        5.1.3
 Release:        0
 License:        LGPL-2.1+ and GPL-2.0+
 Summary:        A Program for Compressing Files
 Url:            http://tukaani.org/lzma/
-Group:          Base/Tools
+Group:          Base/Compression
 Source:         http://tukaani.org/xz/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
-Source1001: 	xz.manifest
+Source1001:     xz.manifest
 BuildRequires:  pkgconfig
+BuildRequires:  gettext-devel
+BuildRequires:  xz
 Provides:       lzma = %{version}
 Obsoletes:      lzma < %{version}
 
@@ -39,14 +41,14 @@ The xz command is a very powerful program for compressing files.
 
 %package -n liblzma
 Summary:        LZMA library
-Group:          System/Libraries
+Group:          Base/Libraries
 
 %description -n liblzma
 Library for encoding/decoding LZMA files.
 
 %package devel
 Summary:        Development package for the LZMA library
-Group:          Development/Libraries
+Group:          Base/Libraries
 Requires:       liblzma = %{version}
 Provides:       lzma-devel = %{version}
 Obsoletes:      lzma-devel < %{version}
@@ -62,26 +64,29 @@ compiling programs using the LZMA library.
 cp %{SOURCE1001} .
 
 %build
+%autogen
 %if %{do_profiling}
 profiledir=$(mktemp -d)
 trap "rm -rf $profiledir" EXIT
 export CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
 %endif
-%configure --disable-static --with-pic --docdir=%_docdir/%{name}
-make %{?_smp_mflags}
+%configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
+%__make %{?_smp_mflags}
 %if %{do_profiling}
-time make check
-make clean
+time %__make check
+%__make clean
 export CFLAGS="%{optflags} %{cflags_profile_feedback}=$profiledir"
-%configure --disable-static --with-pic --docdir=%_docdir/%{name}
-make %{?_smp_mflags}
+%configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
+%__make %{?_smp_mflags}
 %endif
 
 %check
-time make check
+time %__make check
 
 %install
 %make_install
+# License shouldn't be packaged as documentation
+rm -f %{buildroot}%{_docdir}/%{name}/COPYING*
 %find_lang %{name}
 
 %post -n liblzma -p /sbin/ldconfig
@@ -96,7 +101,7 @@ time make check
 %manifest %{name}.manifest
 %defattr(-, root, root)
 %license COPYING*
-%_docdir/%{name}
+%{_docdir}/%{name}
 %{_bindir}/*
 
 %files -n liblzma
@@ -111,5 +116,3 @@ time make check
 %{_includedir}/lzma
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
-
-%changelog
