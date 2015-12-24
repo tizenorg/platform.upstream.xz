@@ -1,7 +1,7 @@
 Name:           xz
 Version:        5.1.3
 Release:        0
-License:        LGPL-2.1+ and GPL-2.0+
+License:        LGPL-2.1 and GPL-2.0
 Summary:        A Program for Compressing Files
 Url:            http://tukaani.org/lzma/
 Group:          Base/Compression
