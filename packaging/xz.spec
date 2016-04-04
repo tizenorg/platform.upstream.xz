@@ -73,12 +73,16 @@ profiledir=$(mktemp -d)
 trap "rm -rf $profiledir" EXIT
 export CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
 %endif
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
 %configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
 %__make %{?_smp_mflags}
 %if %{do_profiling}
 time %__make check
 %__make clean
 export CFLAGS="%{optflags} %{cflags_profile_feedback}=$profiledir"
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
 %configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
 %__make %{?_smp_mflags}
 %endif
