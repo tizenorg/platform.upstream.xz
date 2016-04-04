@@ -125,7 +125,7 @@ typedef enum {
  * could require giving additional options to the encoder that the older
  * match finders don't need.
  */
-extern LZMA_API(lzma_bool) lzma_mf_is_supported(lzma_match_finder match_finder)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_mf_is_supported(lzma_match_finder match_finder)
 		lzma_nothrow lzma_attr_const;
 
 
@@ -167,7 +167,7 @@ typedef enum {
  * mode, which the application developer wasn't aware, could require giving
  * additional options to the encoder that the older modes don't need.
  */
-extern LZMA_API(lzma_bool) lzma_mode_is_supported(lzma_mode mode)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_mode_is_supported(lzma_mode mode)
 		lzma_nothrow lzma_attr_const;
 
 
@@ -416,5 +416,5 @@ typedef struct {
  * \return      On success, false is returned. If the preset is not
  *              supported, true is returned.
  */
-extern LZMA_API(lzma_bool) lzma_lzma_preset(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_lzma_preset(
 		lzma_options_lzma *options, uint32_t preset) lzma_nothrow;

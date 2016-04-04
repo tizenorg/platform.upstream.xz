@@ -280,7 +280,7 @@ typedef struct {
  *              filter chain, consider using lzma_memlimit_encoder() which as
  *              a side-effect validates the filter chain.
  */
-extern LZMA_API(lzma_ret) lzma_block_header_size(lzma_block *block)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_header_size(lzma_block *block)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
 
@@ -302,7 +302,7 @@ extern LZMA_API(lzma_ret) lzma_block_header_size(lzma_block *block)
  *              - LZMA_PROG_ERROR: Invalid arguments, for example
  *                block->header_size is invalid or block->filters is NULL.
  */
-extern LZMA_API(lzma_ret) lzma_block_header_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_header_encode(
 		const lzma_block *block, uint8_t *out)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -340,7 +340,7 @@ extern LZMA_API(lzma_ret) lzma_block_header_encode(
  *              - LZMA_PROG_ERROR: Invalid arguments, for example
  *                block->header_size is invalid or block->filters is NULL.
  */
-extern LZMA_API(lzma_ret) lzma_block_header_decode(lzma_block *block,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_header_decode(lzma_block *block,
 		const lzma_allocator *allocator, const uint8_t *in)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -372,7 +372,7 @@ extern LZMA_API(lzma_ret) lzma_block_header_decode(lzma_block *block,
  *                block->header_size must be a multiple of four and
  *                between 8 and 1024 inclusive.
  */
-extern LZMA_API(lzma_ret) lzma_block_compressed_size(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_compressed_size(
 		lzma_block *block, lzma_vli unpadded_size)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -388,7 +388,7 @@ extern LZMA_API(lzma_ret) lzma_block_compressed_size(
  *
  * \return      Unpadded Size on success, or zero on error.
  */
-extern LZMA_API(lzma_vli) lzma_block_unpadded_size(const lzma_block *block)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_block_unpadded_size(const lzma_block *block)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -401,7 +401,7 @@ extern LZMA_API(lzma_vli) lzma_block_unpadded_size(const lzma_block *block)
  * \return      On success, total encoded size of the Block. On error,
  *              zero is returned.
  */
-extern LZMA_API(lzma_vli) lzma_block_total_size(const lzma_block *block)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_block_total_size(const lzma_block *block)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -419,7 +419,7 @@ extern LZMA_API(lzma_vli) lzma_block_total_size(const lzma_block *block)
  *                the encoder failed.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_block_encoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_encoder(
 		lzma_stream *strm, lzma_block *block)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -437,7 +437,7 @@ extern LZMA_API(lzma_ret) lzma_block_encoder(
  *              - LZMA_PROG_ERROR
  *              - LZMA_MEM_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_block_decoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_decoder(
 		lzma_stream *strm, lzma_block *block)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -448,7 +448,7 @@ extern LZMA_API(lzma_ret) lzma_block_decoder(
  * This is equivalent to lzma_stream_buffer_bound() but for .xz Blocks.
  * See the documentation of lzma_stream_buffer_bound().
  */
-extern LZMA_API(size_t) lzma_block_buffer_bound(size_t uncompressed_size)
+__attribute__ ((visibility ("default"))) extern LZMA_API(size_t) lzma_block_buffer_bound(size_t uncompressed_size)
 		lzma_nothrow;
 
 
@@ -489,7 +489,7 @@ extern LZMA_API(size_t) lzma_block_buffer_bound(size_t uncompressed_size)
  *              - LZMA_DATA_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_block_buffer_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_buffer_encode(
 		lzma_block *block, const lzma_allocator *allocator,
 		const uint8_t *in, size_t in_size,
 		uint8_t *out, size_t *out_pos, size_t out_size)
@@ -508,7 +508,7 @@ extern LZMA_API(lzma_ret) lzma_block_buffer_encode(
  * This function doesn't take lzma_allocator because this function doesn't
  * allocate any memory from the heap.
  */
-extern LZMA_API(lzma_ret) lzma_block_uncomp_encode(lzma_block *block,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_uncomp_encode(lzma_block *block,
 		const uint8_t *in, size_t in_size,
 		uint8_t *out, size_t *out_pos, size_t out_size)
 		lzma_nothrow lzma_attr_warn_unused_result;
@@ -541,7 +541,7 @@ extern LZMA_API(lzma_ret) lzma_block_uncomp_encode(lzma_block *block,
  *              - LZMA_BUF_ERROR: Output buffer was too small.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_block_buffer_decode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_block_buffer_decode(
 		lzma_block *block, const lzma_allocator *allocator,
 		const uint8_t *in, size_t *in_pos, size_t in_size,
 		uint8_t *out, size_t *out_pos, size_t out_size)

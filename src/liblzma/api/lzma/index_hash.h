@@ -62,7 +62,7 @@ extern LZMA_API(void) lzma_index_hash_end(
  *              - LZMA_PROG_ERROR: Invalid arguments or this function is being
  *                used when lzma_index_hash_decode() has already been used.
  */
-extern LZMA_API(lzma_ret) lzma_index_hash_append(lzma_index_hash *index_hash,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_hash_append(lzma_index_hash *index_hash,
 		lzma_vli unpadded_size, lzma_vli uncompressed_size)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -92,7 +92,7 @@ extern LZMA_API(lzma_ret) lzma_index_hash_append(lzma_index_hash *index_hash,
  *              - LZMA_BUF_ERROR: Cannot progress because *in_pos >= in_size.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_hash_decode(lzma_index_hash *index_hash,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_hash_decode(lzma_index_hash *index_hash,
 		const uint8_t *in, size_t *in_pos, size_t in_size)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -102,6 +102,6 @@ extern LZMA_API(lzma_ret) lzma_index_hash_decode(lzma_index_hash *index_hash,
  *
  * This is needed to verify the Backward Size field in the Stream Footer.
  */
-extern LZMA_API(lzma_vli) lzma_index_hash_size(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_hash_size(
 		const lzma_index_hash *index_hash)
 		lzma_nothrow lzma_attr_pure;

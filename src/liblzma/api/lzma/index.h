@@ -283,7 +283,7 @@ typedef enum {
  * value may vary between CPU architectures and also between liblzma versions
  * if the internal implementation is modified.
  */
-extern LZMA_API(uint64_t) lzma_index_memusage(
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_index_memusage(
 		lzma_vli streams, lzma_vli blocks) lzma_nothrow;
 
 
@@ -293,7 +293,7 @@ extern LZMA_API(uint64_t) lzma_index_memusage(
  * This is a shorthand for lzma_index_memusage(lzma_index_stream_count(i),
  * lzma_index_block_count(i)).
  */
-extern LZMA_API(uint64_t) lzma_index_memused(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_index_memused(const lzma_index *i)
 		lzma_nothrow;
 
 
@@ -340,7 +340,7 @@ extern LZMA_API(void) lzma_index_end(
  *                Stream or size of the Index field would grow too big.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_append(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_append(
 		lzma_index *i, const lzma_allocator *allocator,
 		lzma_vli unpadded_size, lzma_vli uncompressed_size)
 		lzma_nothrow lzma_attr_warn_unused_result;
@@ -362,7 +362,7 @@ extern LZMA_API(lzma_ret) lzma_index_append(
  *              - LZMA_OPTIONS_ERROR: Unsupported stream_flags->version.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_stream_flags(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_stream_flags(
 		lzma_index *i, const lzma_stream_flags *stream_flags)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -377,7 +377,7 @@ extern LZMA_API(lzma_ret) lzma_index_stream_flags(
  *
  * The bitmask is 1 << check_id, e.g. CRC32 is 1 << 1 and SHA-256 is 1 << 10.
  */
-extern LZMA_API(uint32_t) lzma_index_checks(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint32_t) lzma_index_checks(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -394,7 +394,7 @@ extern LZMA_API(uint32_t) lzma_index_checks(const lzma_index *i)
  *              - LZMA_DATA_ERROR: The file size would grow too big.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_stream_padding(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_stream_padding(
 		lzma_index *i, lzma_vli stream_padding)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -402,7 +402,7 @@ extern LZMA_API(lzma_ret) lzma_index_stream_padding(
 /**
  * \brief       Get the number of Streams
  */
-extern LZMA_API(lzma_vli) lzma_index_stream_count(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_stream_count(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -412,7 +412,7 @@ extern LZMA_API(lzma_vli) lzma_index_stream_count(const lzma_index *i)
  * This returns the total number of Blocks in lzma_index. To get number
  * of Blocks in individual Streams, use lzma_index_iter.
  */
-extern LZMA_API(lzma_vli) lzma_index_block_count(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_block_count(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -421,7 +421,7 @@ extern LZMA_API(lzma_vli) lzma_index_block_count(const lzma_index *i)
  *
  * This is needed to verify the Backward Size field in the Stream Footer.
  */
-extern LZMA_API(lzma_vli) lzma_index_size(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_size(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -432,7 +432,7 @@ extern LZMA_API(lzma_vli) lzma_index_size(const lzma_index *i)
  * were in a single Stream. This is useful if you are going to combine
  * Blocks from multiple Streams into a single new Stream.
  */
-extern LZMA_API(lzma_vli) lzma_index_stream_size(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_stream_size(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -442,7 +442,7 @@ extern LZMA_API(lzma_vli) lzma_index_stream_size(const lzma_index *i)
  * This doesn't include the Stream Header, Stream Footer, Stream Padding,
  * or Index fields.
  */
-extern LZMA_API(lzma_vli) lzma_index_total_size(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_total_size(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -454,14 +454,14 @@ extern LZMA_API(lzma_vli) lzma_index_total_size(const lzma_index *i)
  * If multiple lzma_indexes have been combined, this includes also the headers
  * of each separate Stream and the possible Stream Padding fields.
  */
-extern LZMA_API(lzma_vli) lzma_index_file_size(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_file_size(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
 /**
  * \brief       Get the uncompressed size of the file
  */
-extern LZMA_API(lzma_vli) lzma_index_uncompressed_size(const lzma_index *i)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_vli) lzma_index_uncompressed_size(const lzma_index *i)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -511,7 +511,7 @@ extern LZMA_API(void) lzma_index_iter_rewind(lzma_index_iter *iter)
  *              and this function returns true. If mode is set to an unknown
  *              value, *iter is not modified and this function returns true.
  */
-extern LZMA_API(lzma_bool) lzma_index_iter_next(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_index_iter_next(
 		lzma_index_iter *iter, lzma_index_iter_mode mode)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -539,7 +539,7 @@ extern LZMA_API(lzma_bool) lzma_index_iter_next(
  * If target is greater than the uncompressed size of the Stream, *iter
  * is not modified, and this function returns true.
  */
-extern LZMA_API(lzma_bool) lzma_index_iter_locate(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_index_iter_locate(
 		lzma_index_iter *iter, lzma_vli target) lzma_nothrow;
 
 
@@ -564,7 +564,7 @@ extern LZMA_API(lzma_bool) lzma_index_iter_locate(
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_cat(lzma_index *dest, lzma_index *src,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_cat(lzma_index *dest, lzma_index *src,
 		const lzma_allocator *allocator)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -593,7 +593,7 @@ extern LZMA_API(lzma_index *) lzma_index_dup(
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_encoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_encoder(
 		lzma_stream *strm, const lzma_index *i)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -621,7 +621,7 @@ extern LZMA_API(lzma_ret) lzma_index_encoder(
  *              - LZMA_MEMLIMIT_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_decoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_decoder(
 		lzma_stream *strm, lzma_index **i, uint64_t memlimit)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -645,7 +645,7 @@ extern LZMA_API(lzma_ret) lzma_index_decoder(
  * \note        This function doesn't take allocator argument since all
  *              the internal data is allocated on stack.
  */
-extern LZMA_API(lzma_ret) lzma_index_buffer_encode(const lzma_index *i,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_buffer_encode(const lzma_index *i,
 		uint8_t *out, size_t *out_pos, size_t out_size) lzma_nothrow;
 
 
@@ -676,7 +676,7 @@ extern LZMA_API(lzma_ret) lzma_index_buffer_encode(const lzma_index *i,
  *              - LZMA_DATA_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_index_buffer_decode(lzma_index **i,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_index_buffer_decode(lzma_index **i,
 		uint64_t *memlimit, const lzma_allocator *allocator,
 		const uint8_t *in, size_t *in_pos, size_t in_size)
 		lzma_nothrow;

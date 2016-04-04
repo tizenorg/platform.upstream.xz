@@ -112,7 +112,7 @@ typedef uint64_t lzma_vli;
  *              - LZMA_BUF_ERROR: No output space was provided.
  *              - LZMA_PROG_ERROR: Arguments are not sane.
  */
-extern LZMA_API(lzma_ret) lzma_vli_encode(lzma_vli vli, size_t *vli_pos,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_vli_encode(lzma_vli vli, size_t *vli_pos,
 		uint8_t *out, size_t *out_pos, size_t out_size) lzma_nothrow;
 
 
@@ -151,7 +151,7 @@ extern LZMA_API(lzma_ret) lzma_vli_encode(lzma_vli vli, size_t *vli_pos,
  *              - LZMA_BUF_ERROR: No input was provided.
  *              - LZMA_PROG_ERROR: Arguments are not sane.
  */
-extern LZMA_API(lzma_ret) lzma_vli_decode(lzma_vli *vli, size_t *vli_pos,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_vli_decode(lzma_vli *vli, size_t *vli_pos,
 		const uint8_t *in, size_t *in_pos, size_t in_size)
 		lzma_nothrow;
 
@@ -162,5 +162,5 @@ extern LZMA_API(lzma_ret) lzma_vli_decode(lzma_vli *vli, size_t *vli_pos,
  * \return      Number of bytes on success (1-9). If vli isn't valid,
  *              zero is returned.
  */
-extern LZMA_API(uint32_t) lzma_vli_size(lzma_vli vli)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint32_t) lzma_vli_size(lzma_vli vli)
 		lzma_nothrow lzma_attr_pure;

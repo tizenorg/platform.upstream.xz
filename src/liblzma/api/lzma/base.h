@@ -560,7 +560,7 @@ typedef struct {
  * See the description of the coder-specific initialization function to find
  * out what `action' values are supported by the coder.
  */
-extern LZMA_API(lzma_ret) lzma_code(lzma_stream *strm, lzma_action action)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_code(lzma_stream *strm, lzma_action action)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
 
@@ -621,7 +621,7 @@ extern LZMA_API(void) lzma_get_progress(lzma_stream *strm,
  *              If this function isn't supported by *strm or some other error
  *              occurs, zero is returned.
  */
-extern LZMA_API(uint64_t) lzma_memusage(const lzma_stream *strm)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_memusage(const lzma_stream *strm)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -634,7 +634,7 @@ extern LZMA_API(uint64_t) lzma_memusage(const lzma_stream *strm)
  * \return      On success, the current memory usage limit is returned
  *              (always non-zero). On error, zero is returned.
  */
-extern LZMA_API(uint64_t) lzma_memlimit_get(const lzma_stream *strm)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_memlimit_get(const lzma_stream *strm)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -650,5 +650,5 @@ extern LZMA_API(uint64_t) lzma_memlimit_get(const lzma_stream *strm)
  *              - LZMA_PROG_ERROR: Invalid arguments, e.g. *strm doesn't
  *                support memory usage limit or memlimit was zero.
  */
-extern LZMA_API(lzma_ret) lzma_memlimit_set(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_memlimit_set(
 		lzma_stream *strm, uint64_t memlimit) lzma_nothrow;

@@ -47,4 +47,4 @@
  *              or if there is no code in liblzma to detect the amount
  *              of RAM on the specific operating system.
  */
-extern LZMA_API(uint64_t) lzma_physmem(void) lzma_nothrow;
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_physmem(void) lzma_nothrow;

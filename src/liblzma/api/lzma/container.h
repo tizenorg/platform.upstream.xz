@@ -194,7 +194,7 @@ typedef struct {
  *              preset when encoding. If an error occurs, for example
  *              due to unsupported preset, UINT64_MAX is returned.
  */
-extern LZMA_API(uint64_t) lzma_easy_encoder_memusage(uint32_t preset)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_easy_encoder_memusage(uint32_t preset)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -210,7 +210,7 @@ extern LZMA_API(uint64_t) lzma_easy_encoder_memusage(uint32_t preset)
  *              occurs, for example due to unsupported preset, UINT64_MAX
  *              is returned.
  */
-extern LZMA_API(uint64_t) lzma_easy_decoder_memusage(uint32_t preset)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_easy_decoder_memusage(uint32_t preset)
 		lzma_nothrow lzma_attr_pure;
 
 
@@ -253,7 +253,7 @@ extern LZMA_API(uint64_t) lzma_easy_decoder_memusage(uint32_t preset)
  * LZMA_RUN, LZMA_SYNC_FLUSH, LZMA_FULL_FLUSH, and LZMA_FINISH. In future,
  * there may be compression levels or flags that don't support LZMA_SYNC_FLUSH.
  */
-extern LZMA_API(lzma_ret) lzma_easy_encoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_easy_encoder(
 		lzma_stream *strm, uint32_t preset, lzma_check check)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -286,7 +286,7 @@ extern LZMA_API(lzma_ret) lzma_easy_encoder(
  *              - LZMA_DATA_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_easy_buffer_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_easy_buffer_encode(
 		uint32_t preset, lzma_check check,
 		const lzma_allocator *allocator,
 		const uint8_t *in, size_t in_size,
@@ -309,7 +309,7 @@ extern LZMA_API(lzma_ret) lzma_easy_buffer_encode(
  *              - LZMA_OPTIONS_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_stream_encoder(lzma_stream *strm,
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_encoder(lzma_stream *strm,
 		const lzma_filter *filters, lzma_check check)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -378,7 +378,7 @@ extern LZMA_API(lzma_ret) lzma_stream_encoder_mt(
  *              - LZMA_OPTIONS_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_alone_encoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_alone_encoder(
 		lzma_stream *strm, const lzma_options_lzma *options)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -405,7 +405,7 @@ extern LZMA_API(lzma_ret) lzma_alone_encoder(
  *              uncompressible data. Currently there is no function to
  *              calculate the maximum expansion of multi-call encoding.
  */
-extern LZMA_API(size_t) lzma_stream_buffer_bound(size_t uncompressed_size)
+__attribute__ ((visibility ("default"))) extern LZMA_API(size_t) lzma_stream_buffer_bound(size_t uncompressed_size)
 		lzma_nothrow;
 
 
@@ -435,7 +435,7 @@ extern LZMA_API(size_t) lzma_stream_buffer_bound(size_t uncompressed_size)
  *              - LZMA_DATA_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_stream_buffer_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_buffer_encode(
 		lzma_filter *filters, lzma_check check,
 		const lzma_allocator *allocator,
 		const uint8_t *in, size_t in_size,
@@ -505,7 +505,7 @@ extern LZMA_API(lzma_ret) lzma_stream_buffer_encode(
  *              - LZMA_OPTIONS_ERROR: Unsupported flags
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_stream_decoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_decoder(
 		lzma_stream *strm, uint64_t memlimit, uint32_t flags)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -527,7 +527,7 @@ extern LZMA_API(lzma_ret) lzma_stream_decoder(
  *              - LZMA_OPTIONS_ERROR: Unsupported flags
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_auto_decoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_auto_decoder(
 		lzma_stream *strm, uint64_t memlimit, uint32_t flags)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -543,7 +543,7 @@ extern LZMA_API(lzma_ret) lzma_auto_decoder(
  *              - LZMA_MEM_ERROR
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_alone_decoder(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_alone_decoder(
 		lzma_stream *strm, uint64_t memlimit)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -586,7 +586,7 @@ extern LZMA_API(lzma_ret) lzma_alone_decoder(
  *              - LZMA_BUF_ERROR: Output buffer was too small.
  *              - LZMA_PROG_ERROR
  */
-extern LZMA_API(lzma_ret) lzma_stream_buffer_decode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_buffer_decode(
 		uint64_t *memlimit, uint32_t flags,
 		const lzma_allocator *allocator,
 		const uint8_t *in, size_t *in_pos, size_t in_size,

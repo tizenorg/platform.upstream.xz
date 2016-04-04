@@ -78,7 +78,7 @@ typedef enum {
  * You can assume that LZMA_CHECK_NONE and LZMA_CHECK_CRC32 are always
  * supported (even if liblzma is built with limited features).
  */
-extern LZMA_API(lzma_bool) lzma_check_is_supported(lzma_check check)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_bool) lzma_check_is_supported(lzma_check check)
 		lzma_nothrow lzma_attr_const;
 
 
@@ -92,7 +92,7 @@ extern LZMA_API(lzma_bool) lzma_check_is_supported(lzma_check check)
  *
  * If the argument is not in the range [0, 15], UINT32_MAX is returned.
  */
-extern LZMA_API(uint32_t) lzma_check_size(lzma_check check)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint32_t) lzma_check_size(lzma_check check)
 		lzma_nothrow lzma_attr_const;
 
 
@@ -116,7 +116,7 @@ extern LZMA_API(uint32_t) lzma_check_size(lzma_check check)
  * \return      Updated CRC value, which can be passed to this function
  *              again to continue CRC calculation.
  */
-extern LZMA_API(uint32_t) lzma_crc32(
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint32_t) lzma_crc32(
 		const uint8_t *buf, size_t size, uint32_t crc)
 		lzma_nothrow lzma_attr_pure;
 
@@ -128,7 +128,7 @@ extern LZMA_API(uint32_t) lzma_crc32(
  *
  * This function is used similarly to lzma_crc32(). See its documentation.
  */
-extern LZMA_API(uint64_t) lzma_crc64(
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint64_t) lzma_crc64(
 		const uint8_t *buf, size_t size, uint64_t crc)
 		lzma_nothrow lzma_attr_pure;
 
@@ -146,5 +146,5 @@ extern LZMA_API(uint64_t) lzma_crc64(
  * returned LZMA_NO_CHECK, LZMA_UNSUPPORTED_CHECK, or LZMA_GET_CHECK.
  * Calling this function in any other situation has undefined behavior.
  */
-extern LZMA_API(lzma_check) lzma_get_check(const lzma_stream *strm)
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_check) lzma_get_check(const lzma_stream *strm)
 		lzma_nothrow;

@@ -105,7 +105,7 @@
  * This allows the application to compare if it was built against the same,
  * older, or newer version of liblzma that is currently running.
  */
-extern LZMA_API(uint32_t) lzma_version_number(void)
+__attribute__ ((visibility ("default"))) extern LZMA_API(uint32_t) lzma_version_number(void)
 		lzma_nothrow lzma_attr_const;
 
 

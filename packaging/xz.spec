@@ -64,6 +64,9 @@ compiling programs using the LZMA library.
 cp %{SOURCE1001} .
 
 %build
+export CFLAGS+=" -fvisibility=hidden"
+  export CXXFLAGS+=" -fvisibility=hidden"
+  
 %autogen
 %if %{do_profiling}
 profiledir=$(mktemp -d)

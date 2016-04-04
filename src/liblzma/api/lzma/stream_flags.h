@@ -119,7 +119,7 @@ typedef struct {
  *                this liblzma version.
  *              - LZMA_PROG_ERROR: Invalid options.
  */
-extern LZMA_API(lzma_ret) lzma_stream_header_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_header_encode(
 		const lzma_stream_flags *options, uint8_t *out)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -136,7 +136,7 @@ extern LZMA_API(lzma_ret) lzma_stream_header_encode(
  *                this liblzma version.
  *              - LZMA_PROG_ERROR: Invalid options.
  */
-extern LZMA_API(lzma_ret) lzma_stream_footer_encode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_footer_encode(
 		const lzma_stream_flags *options, uint8_t *out)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -171,7 +171,7 @@ extern LZMA_API(lzma_ret) lzma_stream_footer_encode(
  *              LZMA_FORMAT_ERROR is returned by lzma_stream_header_decode()
  *              when decoding non-first Stream.
  */
-extern LZMA_API(lzma_ret) lzma_stream_header_decode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_header_decode(
 		lzma_stream_flags *options, const uint8_t *in)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -198,7 +198,7 @@ extern LZMA_API(lzma_ret) lzma_stream_header_decode(
  *              is corrupt (possibly truncated). Stream decoder in liblzma
  *              uses LZMA_DATA_ERROR in this situation.
  */
-extern LZMA_API(lzma_ret) lzma_stream_footer_decode(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_footer_decode(
 		lzma_stream_flags *options, const uint8_t *in)
 		lzma_nothrow lzma_attr_warn_unused_result;
 
@@ -218,6 +218,6 @@ extern LZMA_API(lzma_ret) lzma_stream_footer_decode(
  *              - LZMA_PROG_ERROR: Invalid value, e.g. invalid check or
  *                backward_size.
  */
-extern LZMA_API(lzma_ret) lzma_stream_flags_compare(
+__attribute__ ((visibility ("default"))) extern LZMA_API(lzma_ret) lzma_stream_flags_compare(
 		const lzma_stream_flags *a, const lzma_stream_flags *b)
 		lzma_nothrow lzma_attr_pure;
