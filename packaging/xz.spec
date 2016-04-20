@@ -75,7 +75,7 @@ export CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
 %if %{do_profiling}
 time %__make check
 %__make clean
-export CFLAGS="%{optflags} %{cflags_profile_feedback}=$profiledir"
+export CFLAGS="%{optflags} %{cflags_profile_feedback}=$profiledir -Wno-error=coverage-mismatch"
 %configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
 %__make %{?_smp_mflags}
 %endif
