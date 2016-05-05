@@ -70,6 +70,7 @@ profiledir=$(mktemp -d)
 trap "rm -rf $profiledir" EXIT
 export CFLAGS="%{optflags} %{cflags_profile_generate}=$profiledir"
 %endif
+export LIBS+=" -lpthread "
 %configure --disable-static --with-pic --docdir=%{_docdir}/%{name}
 %__make %{?_smp_mflags}
 %if %{do_profiling}
